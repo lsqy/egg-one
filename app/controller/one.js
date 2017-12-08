@@ -11,7 +11,7 @@ class OneController extends Controller {
     // const idList = await ctx.service.hackerNews.getTopStories(page);
 
     // get itemInfo parallel
-    await ctx.render('one/musicList.tpl', { list: result, page, pageSize });
+    await ctx.render('one/musicList.tpl', { musicList: result, page, pageSize });
   }
 
   async detail() {

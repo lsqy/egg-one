@@ -5,7 +5,7 @@
 }
 .music-list-tag {
     text-align: center;
-    font-size: .426667rem;
+    font-size: .32rem;
     color: #676f6f;
     line-height: .666667rem;
     padding: .266667rem 0 .4rem;
@@ -79,15 +79,18 @@
 }
 .music-list-item-content {
     padding: 0 .533333rem;
+    color: #676f6f;
 }
 .music-list-item-music__desc {
     font-size: .32rem;
-    color: #676f6f;
     padding: .32rem 0 0 0;
 }
 .music-list-item-content-title {
     font-size: .373333rem;
-    color: #676f6f;
     line-height: .666667rem;
     padding: .266667rem 0;
+}
+.music-list-item-content-date {
+    font-size: .32rem;
+    padding: .266667rem 0 .8rem 0;
 }
