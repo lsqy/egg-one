@@ -1,4 +1,10 @@
 /*"cssrem.rootFontSize": 37.5*/
+.mescroll-bounce {
+    height: 100%;
+}
+.data-list {
+    height: 100%;
+}
 .music-list {
     color: #323232;
     background: #f6f6f6;

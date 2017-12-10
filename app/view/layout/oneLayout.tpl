@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/public/css/one.css" />
     <link rel="stylesheet" href="/public/css/normalize.css" />
+    <link rel="stylesheet" href="/public/css/mescroll.min.css" />
     <title>{% block title %}One is All{% endblock %}</title>
     <script>
         (function flexible (window, document) {
@@ -56,5 +57,7 @@
 </head>
 <body>
     {% block content %}{% endblock %}
+    <script src="/public/js/mescroll.min.js"></script>
+    <script src="/public/js/one.js"></script>
 </body>
 </html>
