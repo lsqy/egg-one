@@ -1,3 +1,5 @@
+'use strict';
+
 const Service = require('egg').Service;
 
 /**
@@ -22,68 +24,45 @@ class OneMusic extends Service {
       dataType: 'json',
       timeout: [ '30s', '30s' ],
     }, opts);
-
     const result = await this.ctx.curl(`${this.serverUrl}/${api}`, options);
     return result.data;
   }
 
-  /**
-   * 获取音乐列表
-   * @param {Number} [page] - page number, 1-base
-   * @param {Number} [pageSize] - page count
-   * @return {Promise} id list
-   */
-  async getMusicList(page, pageSize) {
-    page = page || 1;
-    pageSize = pageSize || this.pageSize;
-
-    const result = await this.request('channel/music/more/0', {
-      data: {
-
-      }
+  // 获取音乐列表
+  async getMusicList(params) {
+    const { id } = params;
+    let url = 'channel/music/more/0';
+    if (id) {
+      url = 'channel/music/more/' + id;
+    }
+    const result = await this.request(url, {
+      data: {}
     });
-    console.log(result);
+    // console.log(result);
+    // this.checkSuccess(result);
     // return Object.keys(result).map(key => result[key]);
-    return result.data;
+    return result;
   }
 
-
-  /**
-   * get top story ids
-   * @param {Number} [page] - page number, 1-base
-   * @param {Number} [pageSize] - page count
-   * @return {Promise} id list
-   */
-  async getTopStories(page, pageSize) {
-    page = page || 1;
-    pageSize = pageSize || this.pageSize;
-
-    const result = await this.request('topstories.json', {
-      data: {
-        orderBy: '"$key"',
-        startAt: `"${pageSize * (page - 1)}"`,
-        endAt: `"${pageSize * page - 1}"`,
-      },
+  // 获取音乐详情
+  async getMusicdetail(params) {
+    const { id } = params;
+    let url = `music/detail/${id}`;
+    const result = await this.request(url, {
     });
-    return Object.keys(result).map(key => result[key]);
+    // this.checkSuccess(result);
+    return result;
   }
 
-  /**
-   * query item
-   * @param {Number} id - itemId
-   * @return {Promise} item info
-   */
-  async getItem(id) {
-    return this.request(`item/${id}.json`);
-  }
 
-  /**
-   * get user info
-   * @param {Number} id - userId
-   * @return {Promise} user info
-   */
-  async getUser(id) {
-    return this.request(`user/${id}.json`);
+  checkSuccess(result) {
+    if (result.status !== 200) {
+      const errorMsg = result.data && result.data.error_msg ? result.data.error_msg : 'unknown error';
+      this.ctx.throw(result.status, errorMsg);
+    }
+    if (!result.data.success) {
+      this.ctx.throw(500, 'remote response error', { data: result.data });
+    }
   }
 }
 

@@ -11,4 +11,8 @@ module.exports = app => {
   router.get('/news/item/:id', controller.news.detail);
   router.get('/news/user/:id', controller.news.user);
   router.get('/one/music', controller.one.musicList);
+
+  //api
+  router.resources('music', '/api/v1/music', app.controller.music);
+  router.resources('musicDetail', '/api/v1/musicDetail', app.controller.musicDetail);
 };
