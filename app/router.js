@@ -18,4 +18,5 @@ module.exports = app => {
   router.resources('idlist', '/api/v1/onelist/idlist', controller.idList);
   // router.resources('onelist', '/api/v1/onelist', app.controller.oneList);
   router.get('/api/v1/onelist/:id/:index', controller.oneList.show);
+  router.get('/api/v1/comment/:type/:id', controller.oneList.show);
 };
