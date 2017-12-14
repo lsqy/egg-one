@@ -12,12 +12,19 @@ class MusicController extends Controller {
       super(ctx);
   }
   //请求首页列表数据
-  async getList() {
+  async index() {
+    const { ctx } = this;
+    ctx.body = await ctx.service.oneMusic.getMusicList({
+    });
+    ctx.status = 200;
+  }
+
+  //分页请求，传入列表中最后一条的id
+  async show() {
     const { ctx } = this;
     const { id } = ctx.params;
-    console.log(id);
     ctx.body = await ctx.service.oneMusic.getMusicList({
-      id: id
+        id: id
     });
     ctx.status = 200;
   }

@@ -31,16 +31,9 @@ class OneMusic extends Service {
   // 获取音乐列表
   async getMusicList(params) {
     const { id } = params;
-    let url = 'channel/music/more/0';
-    if (id) {
-      url = 'channel/music/more/' + id;
-    }
+    const url = `channel/music/more/${id}`;
     const result = await this.request(url, {
-      data: {}
     });
-    // console.log(result);
-    // this.checkSuccess(result);
-    // return Object.keys(result).map(key => result[key]);
     return result;
   }
 

@@ -5,18 +5,18 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  app.redirect('/','/news');
-  // router.get('/', controller.home.index);
-  router.get('/news', controller.news.list);
-  router.get('/news/item/:id', controller.news.detail);
-  router.get('/news/user/:id', controller.news.user);
-  router.get('/one/music', controller.one.musicList);
+  // router.get('/one/music', controller.one.musicList);
 
-  //api
-  router.resources('music', '/api/v1/music', controller.music);
-  router.resources('musicDetail', '/api/v1/musicDetail', controller.musicDetail);
-  router.resources('idlist', '/api/v1/onelist/idlist', controller.idList);
-  // router.resources('onelist', '/api/v1/onelist', app.controller.oneList);
-  router.get('/api/v1/onelist/:id/:index', controller.oneList.show);
-  router.get('/api/v1/comment/:type/:id', controller.oneList.show);
+  //测试restfulapi
+  router.resources('music', '/api/v1/restful/music', controller.restful.music);
+  router.resources('musicDetail', '/api/v1/restful/musicDetail', controller.restful.musicDetail);
+  router.resources('idlist', '/api/v1/restful/onelist/idlist', controller.restful.idList);
+
+
+  // router.get('/api/v1/musicList/:id',  )
+  // router.get('/api/v1/onelist/:id/:index', controller.oneList.show);
+
+  router.get('/api/v1/music/:id', controller.music.getList);
+  // 请求评论列表
+  router.get('/api/v1/comment/:type/:id/:lastcommentid', controller.comment.getList);
 };

@@ -12,24 +12,16 @@ class CommentListController extends Controller {
       super(ctx);
   }
   //请求首页列表数据
-  async index() {
+  async getList() {
     const { ctx } = this;
-    ctx.body = await ctx.service.commentList.getCommentList({
+    const { type, id, lastcommentid } = ctx.params;
+    ctx.body = await ctx.service.comment.getCommentList({
+      type: type,
+      id: id,
+      lastcommentid: lastcommentid
     });
     ctx.status = 200;
   }
-
-  //分页请求，传入列表中最后一条的id
-  async show() {
-    const { ctx } = this;
-    const { id, index } = ctx.params;
-    // console.log(id);
-    ctx.body = await ctx.service.oneList.getCommentList({
-        id: id
-    });
-    ctx.status = 200;
-  }
-  
 }
 
 module.exports = CommentListController;
