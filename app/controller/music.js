@@ -11,12 +11,20 @@ class MusicController extends Controller {
   constructor(ctx) {
       super(ctx);
   }
-  //请求首页列表数据
+  //请求音乐列表数据
   async getList() {
     const { ctx } = this;
     const { id } = ctx.params;
-    console.log(id);
     ctx.body = await ctx.service.oneMusic.getMusicList({
+      id: id
+    });
+    ctx.status = 200;
+  }
+  //请求音乐详情数据
+  async getDetail() {
+    const { ctx } = this;
+    const { id } = ctx.params;
+    ctx.body = await ctx.service.oneMusic.getMusicdetail({
       id: id
     });
     ctx.status = 200;

@@ -17,6 +17,7 @@ module.exports = app => {
   // router.get('/api/v1/onelist/:id/:index', controller.oneList.show);
 
   router.get('/api/v1/music/:id', controller.music.getList);
+  router.get('/api/v1/music/detail/:id', controller.music.getDetail);
   // 请求评论列表
   router.get('/api/v1/comment/:type/:id/:lastcommentid', controller.comment.getList);
 };
