@@ -29,7 +29,7 @@ class OneList extends Service {
   }
 
   // 获取图文列表索引
-  async getOneListIndex(params) {
+  async getOneListIndex() {
     let url = 'onelist/idlist';
     const result = await this.request(url, {
     });
@@ -38,9 +38,12 @@ class OneList extends Service {
 
   // 根据索引获取图文详情
   async getOneListItem(params) {
-    const { id, index } = params;
-    let url = `onelist/${id}/${index}`;
-    console.log(url);
+    const ListIndex = await this.getOneListIndex();
+    let id = '';
+    if(ListIndex && ListIndex.data) {
+      id = ListIndex.data[0];
+    }
+    let url = `onelist/${id}/0`;
     const result = await this.request(url, {
     });
     return result;
