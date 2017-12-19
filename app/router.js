@@ -31,4 +31,8 @@ module.exports = app => {
   router.get('/api/v1/movie/:id', controller.movie.getList);
   // 请求影视详情
   router.get('/api/v1/movie/detail/:id', controller.movie.getDetail);
+  // 请求图文列表
+  router.get('/api/v1/hp/:id', controller.hp.getList);
+  // 请求影视详情
+  // router.get('/api/v1/movie/detail/:id', controller.movie.getDetail);
 };
