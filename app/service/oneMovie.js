@@ -42,9 +42,16 @@ class OneMovie extends Service {
   async getMovieDetail(params) {
     const { id } = params;
     const url = `movie/${id}/story/1/0`;
+    const photoUrl = `movie/detail/${id}`;
     console.log(url);
     const result = await this.request(url, {
     });
+    const photoList = await this.request(photoUrl, {});
+    console.log('result',result);
+    if(result && result.data && result.data.data) {
+      photoList.data.photo.unshift(photoList.data.detailcover);
+      result.data.data[0].photoList = photoList.data.photo;
+    }
     return result;
   }  
 }

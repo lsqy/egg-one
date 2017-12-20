@@ -24,7 +24,25 @@ class ReadingController extends Controller {
   async getDetail() {
     const { ctx } = this;
     const { id } = ctx.params;
-    ctx.body = await ctx.service.oneMusic.getMusicdetail({
+    ctx.body = await ctx.service.oneReading.getReadingdetail({
+      id: id
+    });
+    ctx.status = 200;
+  }
+  //请求问答详情数据
+  async getQuestionDetail() {
+    const { ctx } = this;
+    const { id } = ctx.params;
+    ctx.body = await ctx.service.oneReading.getQuestiondetail({
+      id: id
+    });
+    ctx.status = 200;
+  }
+  //请求连载详情数据
+  async getSerialDetail() {
+    const { ctx } = this;
+    const { id } = ctx.params;
+    ctx.body = await ctx.service.oneReading.getSerialdetail({
       id: id
     });
     ctx.status = 200;

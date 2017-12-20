@@ -41,7 +41,27 @@ class OneReading extends Service {
   // 获取阅读详情
   async getReadingdetail(params) {
     const { id } = params;
-    let url = `music/detail/${id}`;
+    let url = `essay/${id}`;
+    const result = await this.request(url, {
+    });
+    // this.checkSuccess(result);
+    return result;
+  }
+
+  // 获取问题详情
+  async getQuestiondetail(params) {
+    const { id } = params;
+    let url = `question/${id}`;
+    const result = await this.request(url, {
+    });
+    // this.checkSuccess(result);
+    return result;
+  }
+
+  // 获取连载详情
+  async getSerialdetail(params) {
+    const { id } = params;
+    let url = `serialcontent/${id}`;
     const result = await this.request(url, {
     });
     // this.checkSuccess(result);
