@@ -7,14 +7,12 @@ module.exports = app => {
   const { router, controller } = app;
   // router.get('/one/music', controller.one.musicList);
 
-  //测试restfulapi
+  //测试restful api
   router.resources('music', '/api/v1/restful/music', controller.restful.music);
   router.resources('musicDetail', '/api/v1/restful/musicDetail', controller.restful.musicDetail);
   router.resources('idlist', '/api/v1/restful/onelist/idlist', controller.restful.idList);
 
 
-  // router.get('/api/v1/musicList/:id',  )
-  // router.get('/api/v1/onelist/:id/:index', controller.oneList.show);
   // 请求首页图文接口
   router.get('/api/v1/onelist', controller.index.getList);
   // 请求音乐列表
