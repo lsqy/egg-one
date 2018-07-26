@@ -27,6 +27,9 @@ class MusicController extends Controller {
     ctx.body = await ctx.service.oneMusic.getMusicdetail({
       id: id
     });
+    // const musicDetail = ctx.body.data;
+    // const result = await this.app.mysql.insert('posts',  musicDetail);
+    const result = await this.app.mysql.insert('posts', { title: 'Hello World' }); 
     ctx.status = 200;
   }
 }
